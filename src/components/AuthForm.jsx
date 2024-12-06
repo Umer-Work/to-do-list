@@ -34,6 +34,12 @@ const AuthForm = () => {
     const { email, password } = form;
 
     if (isSignUp) {
+      console.log({
+        aaaaaaaaaaaaaa: `${
+          import.meta.env.VITE_VERCEL_PROJECT_PRODUCTION_URL
+        }/verify-email`,
+      });
+
       const { data, error } = await supabaseClient.auth.signUp({
         email,
         password,
