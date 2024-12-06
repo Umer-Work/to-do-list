@@ -47,6 +47,13 @@ const AuthForm = () => {
       if (error) setError(error.message);
       else alert("Check your email for confirmation.");
 
+      console.log({
+        aaaaaa: data,
+        bbbbbbb: form,
+        cccccc: email,
+        dddddd: password,
+      });
+
       if (data) {
         await createUserInDatabase(email, password);
         setForm({ email: "", password: "" });
