@@ -13,6 +13,8 @@ const VerifyEmail = () => {
       const token = params.get("token");
       const email = params.get("email");
 
+      console.log({ email, token });
+
       if (token && email) {
         const { error } = await supabaseClient.auth.verifyOtp({
           email,
