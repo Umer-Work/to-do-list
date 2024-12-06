@@ -23,7 +23,7 @@ const VerifyEmail = () => {
         else setMessage("Email verified successfully!");
 
         await supabaseClient
-          .from("todos")
+          .from("users")
           .update({ is_verified: true })
           .eq("email", email);
 
