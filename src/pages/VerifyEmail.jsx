@@ -22,6 +22,11 @@ const VerifyEmail = () => {
         if (error) setMessage("Verification failed.", error);
         else setMessage("Email verified successfully!");
 
+        await supabaseClient
+          .from("todos")
+          .update({ is_verified: true })
+          .eq("email", email);
+
         navigate("/dashboard");
       } else {
         setMessage("Invalid verification link.");
