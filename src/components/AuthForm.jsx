@@ -33,18 +33,14 @@ const AuthForm = () => {
 
     const { email, password } = form;
 
-    console.log({
-      aa2: import.meta.env,
-      bb2: import.meta.env.VITE_REDIRECT_URL,
-      dd2: import.meta.env.VITE_VERCEL_PROJECT_PRODUCTION_URL,
-    });
-
     if (isSignUp) {
       const { data, error } = await supabaseClient.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: import.meta.env.VITE_VERCEL_PROJECT_PRODUCTION_URL,
+          emailRedirectTo: `${
+            import.meta.env.VITE_VERCEL_PROJECT_PRODUCTION_URL
+          }/verify-email`,
         },
       });
 
