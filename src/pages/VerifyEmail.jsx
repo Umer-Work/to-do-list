@@ -22,10 +22,23 @@ const VerifyEmail = () => {
         if (error) setMessage("Verification failed.", error);
         else setMessage("Email verified successfully!");
 
+        const { data: user, error: userError } = await supabaseClient
+          .from("users")
+          .select("id")
+          .eq("email", email)
+          .single();
+
+        console.log({ aaaaaa: user });
+
+        if (userError) {
+          console.error("Error fetching user ID:", userError);
+          return;
+        }
+
         await supabaseClient
           .from("users")
           .update({ is_verified: true })
-          .eq("email", email);
+          .eq("id", user.id);
 
         navigate("/dashboard");
       } else {
