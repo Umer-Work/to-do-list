@@ -33,6 +33,8 @@ const AuthForm = () => {
 
     const { email, password } = form;
 
+    console.log({ aa: import.meta.env, bb: import.meta.env.VITE_REDIRECT_URL });
+
     if (isSignUp) {
       const { data, error } = await supabaseClient.auth.signUp({
         email,
