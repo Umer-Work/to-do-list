@@ -39,7 +39,10 @@ const AuthForm = () => {
       const { data, error } = await supabaseClient.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: import.meta.env.VITE_REDIRECT_URL },
+        options: {
+          emailRedirectTo:
+            "https://to-do-list-flh1egbhm-umer-karachiwalas-projects-2e656918.vercel.app/verify-email",
+        },
       });
 
       if (error) setError(error.message);
