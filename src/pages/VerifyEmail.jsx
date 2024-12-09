@@ -22,7 +22,6 @@ const VerifyEmail = () => {
           type: "signup",
         });
         if (error) setMessage("Verification failed.", error);
-        else setMessage("Email verified successfully!");
 
         const { data: user, error: userError } = await supabaseClient
           .from("users")
@@ -41,6 +40,8 @@ const VerifyEmail = () => {
           .from("users")
           .update({ is_verified: true })
           .eq("id", user.id);
+
+        setMessage("Email verified successfully!");
 
         navigate("/dashboard");
       } else {
